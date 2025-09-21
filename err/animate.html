@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australia 3D Coverflow Carousel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'slide-in': 'slideIn 0.6s ease-out',
+                        'fade-in': 'fadeIn 0.4s ease-out',
+                    },
+                    keyframes: {
+                        slideIn: {
+                            '0%': { transform: 'translateX(20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0px)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .perspective-1000 { perspective: 1000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+        .slide-reflection::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            transform: scaleY(-1);
+            opacity: 0.6;
+        }
+        
+        /* 3D Coverflow transforms */
+        .slide-center {
+            transform: translateX(0) translateZ(0) rotateY(0deg);
+            opacity: 1;
+            z-index: 30;
+        }
+        .slide-left-1 {
+            transform: translateX(-60%) translateZ(-200px) rotateY(35deg);
+            opacity: 0.8;
+            z-index: 20;
+        }
+        .slide-left-2 {
+            transform: translateX(-120%) translateZ(-400px) rotateY(45deg);
+            opacity: 0.6;
+            z-index: 10;
+        }
+        .slide-right-1 {
+            transform: translateX(60%) translateZ(-200px) rotateY(-35deg);
+            opacity: 0.8;
+            z-index: 20;
+        }
+        .slide-right-2 {
+            transform: translateX(120%) translateZ(-400px) rotateY(-45deg);
+            opacity: 0.6;
+            z-index: 10;
+        }
+        .slide-hidden {
+            transform: translateX(200%) translateZ(-600px) rotateY(-60deg);
+            opacity: 0;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen py-10">
+    
+    <!-- Main Section -->
+    <section class="my-10">
+        <!-- Title -->
+        <h2 class="text-center text-5xl font-bold text-orange-600 mb-12 animate-slide-in">
+            Discover Beautiful Australia
+        </h2>
+        
+        <!-- Carousel Section -->
+        <section class="flex justify-center items-center text-black max-w-6xl mx-auto overflow-hidden min-h-[500px] px-4">
+            
+            <!-- Carousel Container -->
+            <div class="carousel-3D-swiper relative w-full max-w-4xl mx-auto perspective-1000 flex justify-center">
+                
+                <!-- Slides Wrapper -->
+                <div class="swiper-wrapper relative h-96 preserve-3d flex justify-center items-center" id="slidesContainer">
+                    
+                    <!-- Slide 1 - Sydney Opera House -->
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-center" data-index="0">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Sydney Opera House">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">Sydney Opera House</h3>
+                                <span class="block text-base text-red-500 mb-2">Iconic Architecture</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    World-renowned performing arts venue and architectural masterpiece overlooking Sydney Harbour.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 - Great Barrier Reef -->
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-right-1" data-index="1">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://images.unsplash.com/photo-1582967788606-a171c1080cb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Great Barrier Reef">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">Great Barrier Reef</h3>
+                                <span class="block text-base text-red-500 mb-2">Marine Wonder</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    World's largest coral reef system with incredible marine biodiversity and diving experiences.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 - Uluru -->
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-right-2" data-index="2">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Uluru">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">Uluru (Ayers Rock)</h3>
+                                <span class="block text-base text-red-500 mb-2">Sacred Site</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    Sacred Aboriginal monolith rising majestically from the heart of Australia's Red Centre.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 - Melbourne -->
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-hidden" data-index="3">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://images.unsplash.com/photo-1514395462725-fb4566210144?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Melbourne">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">Melbourne</h3>
+                                <span class="block text-base text-red-500 mb-2">Cultural Capital</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    Australia's cultural hub famous for coffee, street art, and vibrant laneways.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 - Kangaroo Island -->
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-left-1" data-index="4">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Kangaroo Island">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">Kangaroo Island</h3>
+                                <span class="block text-base text-red-500 mb-2">Wildlife Sanctuary</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    Pristine island sanctuary where native wildlife roams freely in natural habitat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 - Gold Coast -->
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-left-2" data-index="5">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="Gold Coast">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">Gold Coast</h3>
+                                <span class="block text-base text-red-500 mb-2">Beach Paradise</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    Endless golden beaches, theme parks, and perfect surfing conditions await visitors.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Navigation Buttons -->
+                <div class="swiper-button-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-40 bg-white/80 hover:bg-white rounded-full p-3 shadow-lg cursor-pointer transition-all duration-300 hover:scale-110">
+                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </div>
+                
+                <div class="swiper-button-next absolute right-4 top-1/2 transform -translate-y-1/2 z-40 bg-white/80 hover:bg-white rounded-full p-3 shadow-lg cursor-pointer transition-all duration-300 hover:scale-110">
+                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination absolute bottom-[-50px] left-1/2 transform -translate-x-1/2 flex space-x-2 z-50">
+                    <button class="w-4 h-4 rounded-full bg-orange-500 transition-all duration-300 pagination-bullet" data-index="0"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="1"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="2"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="3"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="4"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="5"></button>
+                </div>
+                
+            </div>
+        </section>
+    </section>
+
+    <script>
+        class CoverflowCarousel {
+            constructor() {
+                this.currentSlide = 0;
+                this.totalSlides = 6;
+                this.isAnimating = false;
+                
+                this.slides = document.querySelectorAll('.swiper-slide');
+                this.paginationBullets = document.querySelectorAll('.pagination-bullet');
+                
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.updateSlidePositions();
+            }
+
+            bindEvents() {
+                // Navigation buttons
+                document.querySelector('.swiper-button-next').addEventListener('click', () => this.nextSlide());
+                document.querySelector('.swiper-button-prev').addEventListener('click', () => this.prevSlide());
+
+                // Pagination bullets
+                this.paginationBullets.forEach((bullet, index) => {
+                    bullet.addEventListener('click', () => this.goToSlide(index));
+                });
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') this.nextSlide();
+                    if (e.key === 'ArrowLeft') this.prevSlide();
+                });
+
+                // Touch/Swipe support
+                let startX = 0;
+                let endX = 0;
+
+                document.querySelector('.carousel-3D-swiper').addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+
+                document.querySelector('.carousel-3D-swiper').addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    const diff = startX - endX;
+                    
+                    if (Math.abs(diff) > 50) { // Minimum swipe distance
+                        if (diff > 0) {
+                            this.nextSlide();
+                        } else {
+                            this.prevSlide();
+                        }
+                    }
+                });
+            }
+
+            updateSlidePositions() {
+                if (this.isAnimating) return;
+                
+                this.isAnimating = true;
+
+                this.slides.forEach((slide, index) => {
+                    // Remove all position classes
+                    slide.classList.remove('slide-center', 'slide-left-1', 'slide-left-2', 'slide-right-1', 'slide-right-2', 'slide-hidden');
+                    
+                    // Calculate relative position from current slide
+                    const relativePosition = (index - this.currentSlide + this.totalSlides) % this.totalSlides;
+                    
+                    // Assign position classes based on relative position
+                    if (relativePosition === 0) {
+                        slide.classList.add('slide-center');
+                    } else if (relativePosition === 1) {
+                        slide.classList.add('slide-right-1');
+                    } else if (relativePosition === 2) {
+                        slide.classList.add('slide-right-2');
+                    } else if (relativePosition === this.totalSlides - 1) {
+                        slide.classList.add('slide-left-1');
+                    } else if (relativePosition === this.totalSlides - 2) {
+                        slide.classList.add('slide-left-2');
+                    } else {
+                        slide.classList.add('slide-hidden');
+                    }
+                });
+
+                // Update pagination
+                this.paginationBullets.forEach((bullet, index) => {
+                    if (index === this.currentSlide) {
+                        bullet.classList.remove('bg-gray-300', 'hover:bg-gray-400');
+                        bullet.classList.add('bg-orange-500');
+                    } else {
+                        bullet.classList.remove('bg-orange-500');
+                        bullet.classList.add('bg-gray-300', 'hover:bg-gray-400');
+                    }
+                });
+
+                setTimeout(() => {
+                    this.isAnimating = false;
+                }, 700);
+            }
+
+            nextSlide() {
+                if (this.isAnimating) return;
+                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                this.updateSlidePositions();
+            }
+
+            prevSlide() {
+                if (this.isAnimating) return;
+                this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+                this.updateSlidePositions();
+            }
+
+            goToSlide(index) {
+                if (this.isAnimating || index === this.currentSlide) return;
+                this.currentSlide = index;
+                this.updateSlidePositions();
+            }
+        }
+
+        // Initialize carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new CoverflowCarousel();
+        });
+    </script>
+</body>
+</html>

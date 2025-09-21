@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Australia Tours</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'slide-in': 'slideIn 0.6s ease-out',
+                        'fade-in': 'fadeIn 0.4s ease-out',
+                    },
+                    keyframes: {
+                        slideIn: {
+                            '0%': { transform: 'translateX(20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0px)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .perspective-1000 { perspective: 1000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+        .slide-reflection::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            transform: scaleY(-1);
+            opacity: 0.6;
+        }
+        
+        /* 3D Coverflow transforms */
+        .slide-center {
+            transform: translateX(0) translateZ(0) rotateY(0deg);
+            opacity: 1;
+            z-index: 30;
+        }
+        .slide-left-1 {
+            transform: translateX(-60%) translateZ(-200px) rotateY(35deg);
+            opacity: 0.8;
+            z-index: 20;
+        }
+        .slide-left-2 {
+            transform: translateX(-120%) translateZ(-400px) rotateY(45deg);
+            opacity: 0.6;
+            z-index: 10;
+        }
+        .slide-right-1 {
+            transform: translateX(60%) translateZ(-200px) rotateY(-35deg);
+            opacity: 0.8;
+            z-index: 20;
+        }
+        .slide-right-2 {
+            transform: translateX(120%) translateZ(-400px) rotateY(-45deg);
+            opacity: 0.6;
+            z-index: 10;
+        }
+        .slide-hidden {
+            transform: translateX(200%) translateZ(-600px) rotateY(-60deg);
+            opacity: 0;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">🇦🇺</span>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">Explore Australia Tours</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold">Home</a>
+                    <a href="#culture" class="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold">Culture</a>
+                    <a href="#cities" class="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold">Cities</a>
+                    <a href="#attractions" class="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold">Attractions</a>
+                    <a href="#about" class="text-gray-700 hover:text-orange-500 transition-colors duration-300 font-semibold">About</a>
+                </div>
+                <button class="md:hidden text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20">
+        <img src="/AUSPIC1.avif" class="absolute top-0 left-0 w-full h-full object-cover" alt="">
+        <div class="text-center px-4 max-w-5xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Discover the Magic of
+                <span class="sm:text-[100px] md:text-[150px] lg:text-[200px] text-yellow-300 animate-pulse">
+                    Australia
+                </span>
+            </h1>
+            <button class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                Start Your Journey
+            </button>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-slide-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Welcome to Australia</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto mb-8"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 animate-slide-up">
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Australia is a large country and continent located in the Southern Hemisphere. It is known for its beautiful beaches, unique wildlife, and vast deserts.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        The capital city is Canberra, but the largest and most famous city is Sydney, home to the iconic Sydney Opera House and Harbour Bridge.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Australia's natural wonders, such as the Great Barrier Reef and Uluru (Ayers Rock), are world-renowned. It is also known as "the Oldest Continent," "the Last of Lands," and "the Last Frontier."
+                    </p>
+                </div>
+                <div class="relative w-full rounded-3xl overflow-hidden shadow-xl animate-slide-up">
+                <img src="/Kangaroo.webp" alt="AUSSIIEEEEE" class="w-full h-auto object-cover">
+                <div class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center p-6">
+                    <h3 class="text-2xl font-bold text-white mb-4">Unique Wildlife</h3>
+                    <p class="text-white mb-6">
+                    Australia's unique plant and animal life includes eucalyptus, platypuses, echidnas, acacias, dingoes, kangaroos, koalas, and kookaburras.
+                    </p>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                    <span class="bg-orange-200 text-orange-800 px-3 py-1 rounded-full text-sm font-semibold">🦘 Kangaroos</span>
+                    <span class="bg-green-200 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">🐨 Koalas</span>
+                    <span class="bg-blue-200 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">🐟 Great Barrier Reef</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section id="culture" class="py-20 bg-gradient-to-br from-orange-50 to-red-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Australian Lifestyle & Culture</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Here's what you need to know about the Australian way of life</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Culture Card 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-white text-2xl">😊</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">"No Worries" Attitude</h3>
+                    <p class="text-gray-600 leading-relaxed">Aussies are known for their easy-going attitude. It's about putting aside stress to appreciate the good things in life and saying "no worries, mate" to strangers.</p>
+                </div>
+
+                <!-- Culture Card 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-white text-2xl">🤝</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Spirit of Friendship</h3>
+                    <p class="text-gray-600 leading-relaxed">In Australia, a stranger is just a mate you haven't met yet. Mateship is the beating heart of the Australian spirit – it's practically a national trait.</p>
+                </div>
+
+                <!-- Culture Card 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-white text-2xl">🏖️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Love of Outdoors</h3>
+                    <p class="text-gray-600 leading-relaxed">Australians love to be outdoors. This passion for nature seeps into the local lifestyle all across the country, from ocean swims to weekend bike rides.</p>
+                </div>
+
+                <!-- Culture Card 4 -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-white text-2xl">🎭</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Rich Cultural History</h3>
+                    <p class="text-gray-600 leading-relaxed">Australia's first and oldest stories belong to the Aboriginal and Torres Strait Islander peoples, forming the oldest surviving culture on Earth.</p>
+                </div>
+
+                <!-- Culture Card 5 -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-white text-2xl">🍽️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Food & Drink Culture</h3>
+                    <p class="text-gray-600 leading-relaxed">Enjoying food with loved ones around a shared table is integral to Australian culture, from coastal cafés to beach seafood platters.</p>
+                </div>
+
+                <!-- Culture Card 6 -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-white text-2xl">⚽</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Passionate Sports Culture</h3>
+                    <p class="text-gray-600 leading-relaxed">Australia's lifestyle is laidback, but there's nothing that excites an Aussie more than sport - from cricket to rugby to Australian Rules Football.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destinations" class="py-20 bg-white">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Top 10 Cities in Australia</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore Australia's most iconic locations and hidden gems</p>
+        </div>
+
+      <section class="flex justify-center items-center text-black max-w-6xl mx-auto overflow-hidden min-h-[500px] px-4 mb-4">
+            <div class="carousel-3D-swiper relative w-full max-w-4xl mx-auto perspective-1000 flex justify-center">       
+
+                <div class="swiper-wrapper relative h-96 preserve-3d flex justify-center items-center" id="slidesContainer">                
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-center" data-index="0">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQ9nqGvfEj_3XhlhIXM2vbNUalsHyUaQ5ytt_oxKIbvFT5nIPdOFzwWQ-MJzzHFq2NbGEFe3Tk4yd06bH60ICsgR3csXkA8RxN3aSkd8g" 
+                                     alt="Canberra">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">1. Canberra</h3>
+                                <span class="block text-base text-red-500 mb-2">Iconic Architecture</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    Canberra is Australia’s capital, inland from the country's southeast coast. 
+                                    Surrounded by forest, farmland and nature reserves, it earns its nickname, the "Bush Capital.” 
+                                    The city's focal point isLake Burley Griffin, filled with sailboats and kayaks.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-right-1" data-index="1">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRVPq2A03s-jViCupdkVQ7UhWAJaBVTbiLCsTCUMkkSY_tm78mgEBw2q4gzbeNrAZDrwQHnhL9jK8MbtBhG61yl3tvzbt-cGmDVivjCgA" 
+                                     alt="Sydney">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">2. Sydney</h3>
+                                <span class="block text-base text-red-500 mb-2">Best City</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    Sydney is Australia’s largest and most famous city, known for its stunning harbour and iconic landmarks 
+                                    like the Sydney Opera House and Harbour Bridge Located in New South Wales.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-right-2" data-index="2">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQRxD3HQ9ZxLpUsQKhwB7jc2XifpUIR1W_Ew7ByYLyYWafaJzavA7Xx722TjCgIBleGVW3Zgu9fmnDWR2OJaIF5VyUJJy3_RsWMSjwv6g" 
+                                     alt="Melbourne">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">3. Melbourne </h3>
+                                <span class="block text-base text-red-500 mb-2">Sacred Site</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    Melbourne is the coastal capital of the southeastern Australian state of Victoria. 
+                                    At the city's centre is the modern Federation Square development with plazas, bars, and restaurants by the Yarra River
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 - Melbourne -->
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-hidden" data-index="3">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQcoTV9fR9crhjsgRGNgGEy560ciYWe31zttSUMH0SpLycB33eXwDk0lTlvMx78XfrubadjUpQLBTIQPBVakzJ4sG1T44NqSVAFKGGbJA" 
+                                     alt="Perth">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">4. Perth</h3>
+                                <span class="block text-base text-red-500 mb-2">Cultural Capital</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    Perth, capital of Western Australia, sits where the Swan River meets the southwest coast. 
+                                    Sandy beaches line its suburbs, and the huge, riverside Kings Park and Botanic Garden on Mount Eliza 
+                                    offer sweeping views of the city.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 - Kangaroo Island -->
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-left-1" data-index="4">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRc7gy8ZVY91knTZqMHER7zdipHDuEnvHfD_FGbEje9Yel5L5ZSJ6mcH2t5K9HDihA6r4UU14nOUIktCkMSRo5ZtreAyeVjWbg6zM8bEA" 
+                                     alt="Kangaroo Island">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">5. Brisbane</h3>
+                                <span class="block text-base text-red-500 mb-2">??</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    Brisbane, capital of Queensland, is a large city on the Brisbane River. Clustered in its South Bank cultural 
+                                    precinct are the Queensland Museum and Sciencentre, with noted interactive exhibitions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 - Gold Coast -->
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-left-2" data-index="5">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcS6e4YXUFyo1aLwq1B35s8kMXrCG6bumkl5IwxTn5WzPU02rH64okcGkOxXYbOVDBAqKSs7OOdszSEvugBPal3t2qNEp4oOFSFMvcn6Xi4" 
+                                     alt="Gold Coast">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">6. Gold Coast</h3>
+                                <span class="block text-base text-red-500 mb-2">Beach Paradise</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    he Gold Coast is a metropolitan region south of Brisbane on Australia’s east coast. 
+                                    It's famed for its long sandy beaches, surfing spots and elaborate system of inland canals and waterways.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-left-2" data-index="6">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcT8oZyLCC-TwhiRIJw7i6eRi5U4wnCFU7XFzJpUitwQZoD_4OZAH6RYHq5DAzep5_zhiE3D1ZWqrY6RW6SjmFIf1niDzNUu3gkQjtsFGw" 
+                                     alt="Gold Coast">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">7. Adelaide</h3>
+                                <span class="block text-base text-red-500 mb-2">Beach Paradise</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    Adelaide is South Australia’s cosmopolitan coastal capital. 
+                                    Its ring of parkland on the River Torrens is home to renowned museums such as the Art Gallery of South Australia.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-left-2" data-index="7">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcS66KQILKy8h5BmCbkZnSohMy7ogp4ZUPKF27i31Om9ntmUgm_IoT1RGHKScNET0eUWexB2frbX0y_XgzyqU4Xfsal1fGSJF0St3_m9xX8" 
+                                     alt="Gold Coast">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">8. Townsville City</h3>
+                                <span class="block text-base text-red-500 mb-2">Beach Paradise</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    Townsville is a coastal city in northeastern Queensland, Australia. 
+                                    The Strand esplanade, with its pier and water park, is popular.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-left-2" data-index="8">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcS6e4YXUFyo1aLwq1B35s8kMXrCG6bumkl5IwxTn5WzPU02rH64okcGkOxXYbOVDBAqKSs7OOdszSEvugBPal3t2qNEp4oOFSFMvcn6Xi4" 
+                                     alt="Gold Coast">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">9. Geelong</h3>
+                                <span class="block text-base text-red-500 mb-2">Beach Paradise</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    he Gold Coast is a metropolitan region south of Brisbane on Australia’s east coast. 
+                                    It's famed for its long sandy beaches, surfing spots and elaborate system of inland canals and waterways.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide absolute w-80 transition-all duration-700 ease-out slide-left-2" data-index="9">
+                        <div class="relative">
+                            <div class="image-wrapper overflow-hidden max-h-56 slide-reflection">
+                                <img class="block w-full h-56 object-cover rounded-lg shadow-lg" 
+                                     src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSuf92zILu_zFnNUxui9lnyW8oZWfNb6wupNtZYahRN4nmfz82Pt4fMQILvsQtcViWv4hKR4NappfVFt-HJROnT1M0uyiSHSTNdjwV2nw" 
+                                     alt="Gold Coast">
+                            </div>
+                            <div class="details p-6 bg-white text-center font-semibold rounded-b-lg shadow-lg">
+                                <h3 class="m-0 font-bold text-2xl leading-tight mb-2">10. New Castle</h3>
+                                <span class="block text-base text-red-500 mb-2">Beach Paradise</span>
+                                <p class="mt-2 opacity-65 text-sm font-medium overflow-hidden line-clamp-2">
+                                    Newcastle is a harbour city in the Australian state of New South Wales. 
+                                    Its plentiful beaches are linked by the Bathers Way, a coastal walk stretching between Nobbys Beach and Merewether Beach.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Navigation Buttons -->
+                <div class="swiper-button-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-40 bg-white/80 hover:bg-white rounded-full p-3 shadow-lg cursor-pointer transition-all duration-300 hover:scale-110">
+                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </div>
+                
+                <div class="swiper-button-next absolute right-4 top-1/2 transform -translate-y-1/2 z-40 bg-white/80 hover:bg-white rounded-full p-3 shadow-lg cursor-pointer transition-all duration-300 hover:scale-110">
+                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination absolute bottom-[-50px] left-1/2 transform -translate-x-1/2 flex space-x-2 z-50">
+                    <button class="w-4 h-4 rounded-full bg-orange-500 transition-all duration-300 pagination-bullet" data-index="0"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="1"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="2"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="3"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="4"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="5"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="6"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="7"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="8"></button>
+                    <button class="w-4 h-4 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300 pagination-bullet" data-index="9"></button>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Attractions Section -->
+        <section id="attractions" class="py-20 mt-12 bg-gradient-to-br from-orange-50 to-red-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Must-Visit Attractions</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto mb-8"></div>
+                </div>
+
+                <!-- Natural Attractions -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">Natural Wonders</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                            <img src="/Sea-Dragon-kangaroos.jpg" class="w-full h-64 object-cover" alt="">
+                            <div class="absolute inset-0 bg-black/20 z-10"></div>
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <h4 class="text-white text-2xl font-bold">Kangaroo Island</h4>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-gray-600 leading-relaxed">A nature lover's paradise with prolific native wildlife, dramatic coastal sightseeing, and bountiful farmlands. One of the best places to see wild koalas, kangaroos, sea lions and seals.</p>
+                            </div>
+                        </div>
+                        <div class="relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                            <img src="/the-great-barrier-reef.jpg" class="w-full h-64 object-cover" alt="">
+                            <div class="absolute inset-0 bg-black/20 z-10"></div>
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <h4 class="text-white text-2xl font-bold">Great Barrier Reef</h4>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-gray-600 leading-relaxed">One of the world's most spectacular natural wonders, offering incredible diving and snorkeling experiences among vibrant coral reefs and marine life.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Iconic Landmarks -->
+                <div>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-8 text-center">Iconic Landmarks</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <img src="https://media.timeout.com/images/106138226/750/422/image.jpg" class="w-full h-64 rounded-lg object-cover mb-4" alt="">
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Sydney Opera House</h4>
+                            <p class="text-gray-600 text-sm">Iconic performing arts centre and masterpiece of 20th-century architecture.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <img src="https://www.nfsa.gov.au/sites/default/files/styles/hero_image_extra_large/public/collection/hero_image02-2017/sydney_harbour_bridge_cover_image.jpg?h=149753e0&itok=4m316UKk" class="w-full h-64 rounded-lg object-cover mb-4" alt="">
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Sydney Harbour Bridge</h4>
+                            <p class="text-gray-600 text-sm">Steel arch bridge spanning Sydney Harbour, offering spectacular city views.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <img src="https://www.novotelcanberra.com.au/wp-content/uploads/sites/33/2023/03/australian-parliament-house-00-2200x1200.jpeg" class="w-full h-64 rounded-lg object-cover mb-4" alt="">
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">Parliament House</h4>
+                            <p class="text-gray-600 text-sm">Modern Parliament House in Canberra, featuring striking contemporary architecture.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">About Us</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto mb-8"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-xl text-gray-700 leading-relaxed">
+                        Welcome to <strong>Explore Australia Tours</strong>, your trusted travel companion in discovering the best of Australia. We are passionate about sharing the beauty, culture, and adventure that this incredible country has to offer.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        With years of experience in the tourism industry, our dedicated team of travel experts is committed to providing unforgettable journeys tailored to your interests.
+                    </p>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Join thousands of happy travelers who have explored Australia with us. Let us help you create memories that will last a lifetime!
+                    </p>
+                </div>
+                <div class="bg-gradient-to-br from-orange-100 to-red-100 p-8 rounded-3xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Why Choose Us?</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <span class="text-gray-700 font-semibold">Expert local guides</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <span class="text-gray-700 font-semibold">Customized tour packages</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <span class="text-gray-700 font-semibold">Affordable pricing</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <span class="text-gray-700 font-semibold">24/7 customer support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 bottom-0 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-sm">&
+                        © 2023 Explore Australia Tours. All rights reserved.
+                    </p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com" target="_blank" class="text-white hover:text-orange-500 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.494V14.706h-3.12v-3.62h3.12V9.412c0-3.09 1.892-4.788 4.655-4.788 1.325 0 2.465.098 2.8.142v3.25h-1.92c-1.505 0-1.794.716-1.794 1.766v2.31h3.588l-.467 3.62h-3.121V24h6.116c.73 0 1.323-.593 1.323-1.324V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" class="text-white hover:text-orange-500 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.954 4.569c-.885-.392-1.83-.656-2.825-.775a4.935 4.935 0 002.163-2.723c-.951.555-2 .959-3 .117a4.92 4.92 0 00-8 .445c-.001-.001-.002-.002-.003-.003A
+4.92 4.92 0 001.67 6.16c-.001.002-.002.004-.003.006a4.92 4.92 0 00-1.11 3.08c0 .001 0 .002.001.003a4.92 4.92 0 00.445 2.163c-.392.885-.656 1.83-.775 2.825a4.935 4.935 0 002.723-2.163c-.555.951-.959 2-.117 3a4.92 4.92 0 00-.445 8c0 .001.001.002.002.003a4.92 4.92 0 003.08 1.11c.001.001.002.001.003.001a4.92 4.92 0 002.163.445c.951.392 2 .656 3 .775a4.935 4.935 0 002.723-2.723c.555-.951.959-2 .117-3a4.92 4.92 0 00.445-8z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="text-white hover:text-orange-500 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.203 0 3.584.012 4.85.07 1.267.058 2.15.27 2.65.57a5.35 5.35 0 011.95 1.95c.3.5.512 1.383.57 2.65.058 1.266.07 1.647.07 4.85s-.012 3.584-.07 4.85c-.058 1.267-.27 2.15-.57 2.65a5.35 5.35 0 01-1.95 1.95c-.5.3-1.383.512-2.65.57-1.266.058-1.647.07-4.85.07s-3.584-.012-4.85-.07c-1.267-.058-2.15-.27-2.65-.57a5.35 5.35 0 01-1.95-1.95c-.3-.5-.512-1.383-.57-2.65C2.175 15 .163 14 .163 12s2 .012 4 .07c1 .058 1 .27 1 .57v4c0 .3-.012 .512-.07 .65a5.35 5.35 0 01-1 .95c-.5-.3-1-.512-2-.57C4 .175 3 .163 12 .163s8 .012 9 .07c1 .058 1 .27 1 .57v4c0 .3-.012 .512-.07 .65a5.35 5.35 0 01-1 .95c-.5-.3-1-.512-2-.57C15 .175 14 .163 12 .163zM12 .163C6 .163 0 .175z"/></svg>
+                    </a>
+                </div>
+                <div class="text-center mt-4">
+                    <p class="text-sm">Follow us on social media for the latest updates and travel tips!</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        class CoverflowCarousel {
+            constructor() {
+                this.currentSlide = 0;
+                this.totalSlides = 10;
+                this.isAnimating = false;
+                
+                this.slides = document.querySelectorAll('.swiper-slide');
+                this.paginationBullets = document.querySelectorAll('.pagination-bullet');
+                
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.updateSlidePositions();
+            }
+
+            bindEvents() {
+                // Navigation buttons
+                document.querySelector('.swiper-button-next').addEventListener('click', () => this.nextSlide());
+                document.querySelector('.swiper-button-prev').addEventListener('click', () => this.prevSlide());
+
+                // Pagination bullets
+                this.paginationBullets.forEach((bullet, index) => {
+                    bullet.addEventListener('click', () => this.goToSlide(index));
+                });
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') this.nextSlide();
+                    if (e.key === 'ArrowLeft') this.prevSlide();
+                });
+
+                // Touch/Swipe support
+                let startX = 0;
+                let endX = 0;
+
+                document.querySelector('.carousel-3D-swiper').addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+
+                document.querySelector('.carousel-3D-swiper').addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    const diff = startX - endX;
+                    
+                    if (Math.abs(diff) > 50) { // Minimum swipe distance
+                        if (diff > 0) {
+                            this.nextSlide();
+                        } else {
+                            this.prevSlide();
+                        }
+                    }
+                });
+            }
+
+            updateSlidePositions() {
+                if (this.isAnimating) return;
+                
+                this.isAnimating = true;
+
+                this.slides.forEach((slide, index) => {
+                    // Remove all position classes
+                    slide.classList.remove('slide-center', 'slide-left-1', 'slide-left-2', 'slide-right-1', 'slide-right-2', 'slide-hidden');
+                    
+                    // Calculate relative position from current slide
+                    const relativePosition = (index - this.currentSlide + this.totalSlides) % this.totalSlides;
+                    
+                    // Assign position classes based on relative position
+                    if (relativePosition === 0) {
+                        slide.classList.add('slide-center');
+                    } else if (relativePosition === 1) {
+                        slide.classList.add('slide-right-1');
+                    } else if (relativePosition === 2) {
+                        slide.classList.add('slide-right-2');
+                    } else if (relativePosition === this.totalSlides - 1) {
+                        slide.classList.add('slide-left-1');
+                    } else if (relativePosition === this.totalSlides - 2) {
+                        slide.classList.add('slide-left-2');
+                    } else {
+                        slide.classList.add('slide-hidden');
+                    }
+                });
+
+                // Update pagination
+                this.paginationBullets.forEach((bullet, index) => {
+                    if (index === this.currentSlide) {
+                        bullet.classList.remove('bg-gray-300', 'hover:bg-gray-400');
+                        bullet.classList.add('bg-orange-500');
+                    } else {
+                        bullet.classList.remove('bg-orange-500');
+                        bullet.classList.add('bg-gray-300', 'hover:bg-gray-400');
+                    }
+                });
+
+                setTimeout(() => {
+                    this.isAnimating = false;
+                }, 700);
+            }
+
+            nextSlide() {
+                if (this.isAnimating) return;
+                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                this.updateSlidePositions();
+            }
+
+            prevSlide() {
+                if (this.isAnimating) return;
+                this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+                this.updateSlidePositions();
+            }
+
+            goToSlide(index) {
+                if (this.isAnimating || index === this.currentSlide) return;
+                this.currentSlide = index;
+                this.updateSlidePositions();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new CoverflowCarousel();
+        });
+    </script>
+</body>
+</html>
