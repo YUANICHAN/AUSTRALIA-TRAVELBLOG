@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust Australia - Travel Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex gap-2 text-2xl font-bold text-blue-600">
+                    <img src="/Flag_of_Australia_(converted).svg.webp" class="w-15 h-10 rounded-full" alt="">
+                    <span>AUSTRALIA</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Home</a>
+                    <a href="#destinations" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Destinations</a>
+                    <a href="#experiences" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Experiences</a>
+                    <a href="#tips" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">Tips</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors duration-200">About</a>
+                </div>
+                <button class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20">
+        <img src="/AUSPIC1.avif" class="absolute top-0 left-0 w-full h-full object-cover" alt="">
+        <div class="text-center px-4 max-w-5xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Discover the Magic of
+                <span class="sm:text-[100px] md:text-[150px] lg:text-[200px] text-yellow-300 animate-pulse">
+                    Australia
+                </span>
+            </h1>
+            <button class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                Start Your Journey
+            </button>
+        </div>
+    </section>
+
+    <section id="destinations" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Must-Visit Destinations</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore Australia's most iconic locations and hidden gems</p>
+    </div>
+
+    <div
+      id="carouselExampleCaptions"
+      class="relative"
+      data-tw-carousel-init
+      data-tw-ride="carousel"
+    >
+      <!-- Carousel indicators -->
+      <div
+        class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+        data-tw-carousel-indicators
+      >
+        <button
+          type="button"
+          data-tw-target="#carouselExampleCaptions"
+          data-tw-slide-to="0"
+          data-tw-carousel-active
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-gray-400 bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-tw-target="#carouselExampleCaptions"
+          data-tw-slide-to="1"
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-gray-400 bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-tw-target="#carouselExampleCaptions"
+          data-tw-slide-to="2"
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-gray-400 bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+          aria-label="Slide 3"
+        ></button>
+        <button
+          type="button"
+          data-tw-target="#carouselExampleCaptions"
+          data-tw-slide-to="3"
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-gray-400 bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+          aria-label="Slide 4"
+        ></button>
+        <button
+          type="button"
+          data-tw-target="#carouselExampleCaptions"
+          data-tw-slide-to="4"
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-gray-400 bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+          aria-label="Slide 5"
+        ></button>
+        <button
+          type="button"
+          data-tw-target="#carouselExampleCaptions"
+          data-tw-slide-to="5"
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-gray-400 bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-in-out motion-reduce:transition-none"
+          aria-label="Slide 6"
+        ></button>
+      </div>
+
+      <!-- Carousel items -->
+      <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+        <!-- Slide 1 -->
+        <div
+          class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-tw-carousel-active
+          data-tw-carousel-item
+          style="backface-visibility: hidden"
+        >
+          <img
+            src="/pic2.jpg"
+            class="block w-full max-h-[500px] object-cover"
+            alt="Sydney"
+          />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block bg-black bg-opacity-50 rounded-lg"
+          >
+            <h5 class="text-2xl font-bold">Sydney</h5>
+            <p>Home to the iconic Opera House and Harbour Bridge, Sydney combines urban sophistication with stunning harbor views.</p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div
+          class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-tw-carousel-item
+          style="backface-visibility: hidden"
+        >
+          <img
+            src="/pic3.avif"
+            class="block w-full max-h-[500px] object-cover"
+            alt="Great Barrier Reef"
+          />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block bg-black bg-opacity-50 rounded-lg"
+          >
+            <h5 class="text-2xl font-bold">Great Barrier Reef</h5>
+            <p>The world's largest coral reef system offers unparalleled snorkeling and diving experiences.</p>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div
+          class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-tw-carousel-item
+          style="backface-visibility: hidden"
+        >
+          <img
+            src="/pic4.webp"
+            class="block w-full max-h-[500px] object-cover"
+            alt="Uluru"
+          />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block bg-black bg-opacity-50 rounded-lg"
+          >
+            <h5 class="text-2xl font-bold">Uluru</h5>
+            <p>Australia's spiritual heart, this sacred monolith offers breathtaking sunrises and deep cultural significance.</p>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div
+          class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-tw-carousel-item
+          style="backface-visibility: hidden"
+        >
+          <img
+            src="/pic5.jpg"
+            class="block w-full max-h-[500px] object-cover"
+            alt="Melbourne"
+          />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block bg-black bg-opacity-50 rounded-lg"
+          >
+            <h5 class="text-2xl font-bold">Melbourne</h5>
+            <p>Known for its coffee culture, street art, and vibrant laneways. A cultural hub with amazing food and nightlife.</p>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div
+          class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-tw-carousel-item
+          style="backface-visibility: hidden"
+        >
+          <img
+            src="/pic6.jpg"
+            class="block w-full max-h-[500px] object-cover"
+            alt="Tasmania"
+          />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block bg-black bg-opacity-50 rounded-lg"
+          >
+            <h5 class="text-2xl font-bold">Tasmania (Tassie)</h5>
+            <p>Pristine wilderness, unique wildlife, and world-class museums make Tasmania a nature lover's paradise.</p>
+          </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div
+          class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-tw-carousel-item
+          style="backface-visibility: hidden"
+        >
+          <img
+            src="/pic2.jpg"
+            class="block w-full max-h-[500px] object-cover"
+            alt="Perth & Western Australia"
+          />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block bg-black bg-opacity-50 rounded-lg"
+          >
+            <h5 class="text-2xl font-bold">Perth & Western Australia</h5>
+            <p>Beautiful beaches, wine regions, and the gateway to the stunning landscapes of Western Australia.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel controls -->
+      <button
+        type="button"
+        class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-in-out hover:text-white hover:no-underline hover:opacity-90 focus:text-white focus:no-underline focus:opacity-90 motion-reduce:transition-none"
+        data-tw-target="#carouselExampleCaptions"
+        data-tw-slide="prev"
+      >
+        <span class="inline-block h-8 w-8">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </span>
+        <span class="sr-only">Previous</span>
+      </button>
+      <button
+        type="button"
+        class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-in-out hover:text-white hover:no-underline hover:opacity-90 focus:text-white focus:no-underline focus:opacity-90 motion-reduce:transition-none"
+        data-tw-target="#carouselExampleCaptions"
+        data-tw-slide="next"
+      >
+        <span class="inline-block h-8 w-8">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-6 w-6"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </span>
+        <span class="sr-only">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Travel Experiences -->
+    <section id="experiences" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Unique Australian Experiences</h2>
+                <p class="text-xl text-gray-600">Adventures that define the Australian spirit</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-blue-500 text-white p-3 rounded-full text-2xl">🦘</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Wildlife Encounters</h3>
+                            <p class="text-gray-600">Meet kangaroos, koalas, and Tasmanian devils in their natural habitat. Australia's unique fauna is unlike anywhere else on Earth.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-orange-500 text-white p-3 rounded-full text-2xl">🏄‍♀️</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Surf Culture</h3>
+                            <p class="text-gray-600">Learn to surf on world-famous beaches like Bondi, or catch perfect waves along the Gold Coast and beyond.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-purple-500 text-white p-3 rounded-full text-2xl">🎨</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Aboriginal Culture</h3>
+                            <p class="text-gray-600">Discover the world's oldest living culture through art, storytelling, and traditional experiences with Indigenous guides.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-green-500 text-white p-3 rounded-full text-2xl">🚗</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Road Trip Adventures</h3>
+                            <p class="text-gray-600">Drive the Great Ocean Road, explore the Outback, or cruise through wine country on epic Australian road trips.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-pink-400 via-red-500 to-yellow-500 p-8 rounded-3xl text-white">
+                    <h3 class="text-3xl font-bold mb-4">Planning Your Trip?</h3>
+                    <p class="text-lg mb-6">Get personalized recommendations and insider tips from local Australian travel experts.</p>
+                    <button class="bg-white text-red-500 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-200">
+                        Get Free Travel Guide
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section id="tips" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Essential Travel Tips</h2>
+                <p class="text-xl text-gray-600">Everything you need to know for your Australian adventure</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
+                    <div class="text-4xl mb-4">💰</div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Budget Planning</h3>
+                    <p class="text-gray-600 text-sm">Australia can be expensive, but with smart planning you can travel affordably. Budget $100-150 AUD per day for mid-range travel.</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl">
+                    <div class="text-4xl mb-4">🌞</div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Best Time to Visit</h3>
+                    <p class="text-gray-600 text-sm">March-May and September-November offer ideal weather. Remember, seasons are opposite to the Northern Hemisphere.</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl">
+                    <div class="text-4xl mb-4">🛂</div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Visa Requirements</h3>
+                    <p class="text-gray-600 text-sm">Most visitors need an ETA or eVisitor visa. Apply online before traveling - it's quick and easy.</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl">
+                    <div class="text-4xl mb-4">🦘</div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Safety & Wildlife</h3>
+                    <p class="text-gray-600 text-sm">Australia is very safe! Be sun-smart, stay hydrated, and respect wildlife. Most dangerous animals avoid humans.</p>
+                </div>
+            </div>
+
+            <!-- Additional Tips -->
+            <div class="mt-12 bg-gray-50 rounded-2xl p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Insider Tips from Locals</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-green-500 text-xl">✓</span>
+                            <p class="text-gray-700">Download offline maps - mobile coverage can be spotty in remote areas</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-green-500 text-xl">✓</span>
+                            <p class="text-gray-700">Pack layers - temperatures can vary dramatically between regions</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-green-500 text-xl">✓</span>
+                            <p class="text-gray-700">Try local coffee culture - Australians take their coffee seriously!</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-green-500 text-xl">✓</span>
+                            <p class="text-gray-700">Book domestic flights early for better deals on long distances</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-green-500 text-xl">✓</span>
+                            <p class="text-gray-700">Tipping isn't expected but appreciated for exceptional service</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-green-500 text-xl">✓</span>
+                            <p class="text-gray-700">Public transport in cities is excellent - get a travel card</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-gradient-to-r from-indigo-600 to-purple-600">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Stay Updated on Australian Adventures</h2>
+            <p class="text-xl text-indigo-100 mb-8">Get the latest travel tips, destination guides, and insider secrets delivered to your inbox</p>
+            <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg text-gray-900">
+                <button class="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold text-blue-400 mb-4">🇦🇺 Wanderlust Australia</div>
+                    <p class="text-gray-400 mb-4">Your ultimate guide to exploring the land down under. Discover hidden gems, iconic landmarks, and unforgettable experiences.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">📘</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">📷</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">🐦</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">📺</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Destinations</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Sydney</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Melbourne</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Great Barrier Reef</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Uluru</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Tasmania</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Travel Resources</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Visa Information</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Budget Planning</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Packing Lists</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Travel Insurance</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Safety Tips</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Our Story</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Advertise</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Wanderlust Australia. All rights reserved. Made with ❤️ for travelers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const carousel = document.querySelector("#carouselExampleCaptions");
+  const slides = carousel.querySelectorAll("[data-tw-carousel-item]");
+  const indicators = carousel.querySelectorAll("[data-tw-slide-to]");
+  const prevBtn = carousel.querySelector("[data-tw-slide='prev']");
+  const nextBtn = carousel.querySelector("[data-tw-slide='next']");
+
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+  let autoSlide;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.add("hidden");
+      slide.classList.remove("block");
+      indicators[i]?.classList.remove("opacity-100", "bg-white");
+      indicators[i]?.classList.add("opacity-50");
+    });
+
+    slides[index].classList.remove("hidden");
+    slides[index].classList.add("block");
+
+    indicators[index]?.classList.add("opacity-100", "bg-white");
+    indicators[index]?.classList.remove("opacity-50");
+
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    let newIndex = (currentIndex + 1) % totalSlides;
+    showSlide(newIndex);
+  }
+
+  function prevSlide() {
+    let newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    showSlide(newIndex);
+  }
+
+  // Button controls
+  nextBtn.addEventListener("click", () => {
+    nextSlide();
+    resetAutoSlide();
+  });
+  prevBtn.addEventListener("click", () => {
+    prevSlide();
+    resetAutoSlide();
+  });
+
+  // Indicator controls
+  indicators.forEach((indicator, i) => {
+    indicator.addEventListener("click", () => {
+      showSlide(i);
+      resetAutoSlide();
+    });
+  });
+
+  // Auto slide every 5s
+  function startAutoSlide() {
+    autoSlide = setInterval(nextSlide, 5000);
+  }
+
+  function resetAutoSlide() {
+    clearInterval(autoSlide);
+    startAutoSlide();
+  }
+
+  // Init
+  showSlide(0);
+  startAutoSlide();
+});
+
+    </script>
+</body>
+</html>
